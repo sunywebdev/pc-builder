@@ -1,10 +1,11 @@
+import PcBuildHeader from "@/components/PcBuildHeader";
 import { addToBuilder } from "@/redux/features/pc_build/pcBuildSlice";
 import Head from "next/head";
 import Image from "next/image";
-import Link from "next/link";
 import { useRouter } from "next/router";
 import React from "react";
 import { useDispatch } from "react-redux";
+import { AiFillStar, AiOutlineStar } from "react-icons/ai";
 
 const Choose = ({ products }) => {
 	const router = useRouter();
@@ -24,60 +25,60 @@ const Choose = ({ products }) => {
 			</Head>
 			<section>
 				<div className='mx-auto  max-w-7xl my-10  shadow-sm  rounded-md border'>
-					<div className='flex justify-between bg-white p-3'>
-						<h2 className='p-3 text-xl font-semibold text-center  border-b'>
-							Build Your Own Dream PC
-						</h2>
-
-						<div>
-							<button className='py-2 px-12 text-white bg-black rounded-md flex justify-center items-center flex-col'>
-								<span className='font-bold text-xl'>7000tk</span>
-								<span className='font-semibold'>1 Items</span>
-							</button>
-						</div>
-					</div>
-
+					<PcBuildHeader />
 					<div>
-						<div
-							className={` z-10 overflow-hidden  bg-white m-4 shadow-lg ring-1 ring-gray-900/5`}>
+						<div className='mt-6 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4'>
 							{products?.map((product) => (
-								<div
-									key={product?.id}
-									className='flex justify-between flex-col lg:flex-row items-center group my-3 rounded-lg p-4 text-sm leading-6 hover:bg-gray-50 border'>
-									<div className=' relative flex flex-col lg:flex-row items-center gap-x-6 '>
-										<div className='flex flex-none items-center justify-center rounded-lg bg-gray-50 w-[200px] group-hover:bg-white text-xl'>
+								<div key={product.id} className='relative'>
+									<div className='group relative border p-3 h-100 duration-300 hover:shadow-xl'>
+										<div className='aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-md  lg:aspect-none group-hover:opacity-75 p-6 '>
 											<Image
-												src={product?.images}
-												alt={product?.name}
-												width={100}
+												src={product.images}
+												alt={product.name}
 												height={100}
+												width={100}
 												layout='responsive'
 											/>
 										</div>
-										<div className='flex-auto'>
-											<Link
-												href={`/products/${product.id}`}
-												className='block font-semibold text-sm lg:text-xl text-gray-900'>
+										<div className='border-t py-2'>
+											<h3 className=' text-purple-700'>
 												{product.name}
-												<span className='absolute inset-0'></span>
-											</Link>
+											</h3>
 
-											{product?.keyFeatures?.map((features) => (
-												<p key={features} className='mt-1 text-gray-600'>
-													<span>*</span> {features}
+											<div className='flex justify-between w-full items-center my-2'>
+												<p className=''>{product.Status}</p>
+												<div className='flex items-center'>
+													{product.category}
+												</div>
+											</div>
+											<div className='flex justify-between w-full items-center'>
+												<p className='text-xl font-bold text-purple-700'>
+													{product.Price}
 												</p>
-											))}
-										</div>
-									</div>
 
-									<div className='flex justify-center items-center flex-col'>
-										<p className='text-2xl font-bold p-2 my-2 text-[#EE4B23]'>
-											{product?.Price}
-										</p>
+												<div className='text-purple-700 flex items-center'>
+													{[...Array(Math.round(product.rating))].map(
+														(_, index) => (
+															<AiFillStar key={index} />
+														),
+													)}
+													{[
+														...Array(
+															Math.max(5 - Math.round(product.rating), 0),
+														),
+													].map((_, index) => (
+														<AiOutlineStar key={index} />
+													))}
+												</div>
+											</div>
+										</div>{" "}
 										<button
 											onClick={() => productAddedHandelar(product)}
-											className='text-xl font-semibold lg:font-bold py-3 px-6 text-white bg-black rounded-md'>
-											Add To Builder
+											className='text-xl font-semibold py-2 px-6 text-white bg-purple-700 rounded-md hover:bg-gray-400'
+											style={{
+												width: "-webkit-fill-available",
+											}}>
+											Add
 										</button>
 									</div>
 								</div>
@@ -113,7 +114,7 @@ export async function getServerSideProps(context) {
 	} catch (error) {
 		console.error("Error fetching data:", error);
 		return {
-			notFound: true, 
+			notFound: true, // Or handle the error gracefully based on your use case
 		};
 	}
 }

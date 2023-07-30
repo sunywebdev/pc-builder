@@ -9,7 +9,7 @@ export default async function handler(req, res) {
       const products = JSON.parse(data);
 
       res.status(200).json({
-        message: "Products retrieved successfully!",
+        message: "Products received successfully",
         data: products
           .sort((a, b) => parseFloat(b.rating) - parseFloat(a.rating))
           .slice(0, 20),
@@ -19,6 +19,7 @@ export default async function handler(req, res) {
       res.status(500).json({ message: "Internal server error" });
     }
   } else {
+    // For other HTTP methods, return an error
     res.status(405).json({ message: "Method not allowed" });
   }
 }

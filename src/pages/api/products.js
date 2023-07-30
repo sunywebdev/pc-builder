@@ -17,10 +17,10 @@ export default async function handler(req, res) {
 
         res
           .status(200)
-          .json({ message: "Products retrieved successfully!", data: filtered });
+          .json({ message: "Products received successfully", data: filtered });
       } else {
         res.status(200).json({
-          message: "Products retrieved successfully!",
+          message: "Products received successfully",
           data: products,
         });
       }

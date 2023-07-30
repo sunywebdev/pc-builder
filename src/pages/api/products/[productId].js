@@ -14,8 +14,10 @@ export default function handler(req, res) {
         (product) => product.id.toString() === productId
       );
 
+      // console.log(product);
+
       if (!product) {
-        res.status(404).json({ message: "Product not found!" });
+        res.status(404).json({ message: "Product not found" });
       }
       const relatedProduct = products
         .filter(
@@ -28,7 +30,7 @@ export default function handler(req, res) {
       product.related = relatedProduct;
 
       res.status(200).json({
-        message: "Product retrieved successfully!",
+        message: "Product received successfully",
         data: product,
       });
     } catch (error) {
@@ -36,6 +38,7 @@ export default function handler(req, res) {
       res.status(500).json({ message: "Internal server error" });
     }
   } else {
+    // For other HTTP methods, return an error
     res.status(405).json({ message: "Method not allowed" });
   }
 }
