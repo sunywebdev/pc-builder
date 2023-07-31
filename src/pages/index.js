@@ -20,14 +20,14 @@ export default function Home({ productsRes }) {
 }
 
 export async function getStaticProps() {
+	if (typeof window !== "undefined") {
+		return {
+			props: {
+				productsRes: [],
+			},
+		};
+	}
 	try {
-		if (typeof window !== "undefined")
-			return {
-				props: {
-					productsRes: [],
-				},
-			};
-
 		const res = await fetch(`${process.env.NEXT_PUBLIC_NEXT_APP_URL}/api/home`);
 		if (!res.ok) {
 			throw new Error("Fetch failed");

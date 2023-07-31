@@ -1,8 +1,8 @@
 # PC Builder Website - Next.js Application
 
 # Live Link
-- https://
- 
+
+- https://pc-builder-sunywebdev.vercel.app
 
 ## Table of Contents
 
@@ -46,6 +46,6 @@ Once you have Node.js and Git installed, follow these steps:
 1. Clone the repository:
 
 ```bash
-git clone https://github.com/your-username/pc-builder-website.git
+git clone https://github.com/sunywebdev/pc-builder.git
 cd pc-builder-website
 ```
