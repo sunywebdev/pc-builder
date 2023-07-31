@@ -11,7 +11,7 @@ const ProductCard = ({ product }) => {
 	return (
 		<Link href={`/products/${id}`}>
 			<div className='relative'>
-				<div className='group relative border px-3 lg:h-[420px]  duration-300 hover:shadow-xl'>
+				<div className='group relative border px-3 duration-300 hover:shadow-xl'>
 					<div className='aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-md  lg:aspect-none group-hover:opacity-75 p-6 '>
 						<Image
 							src={images}

@@ -21,43 +21,43 @@ const Products = ({ productsRes }) => {
 			id: 1,
 			name: "CPU/Processor",
 			link: "/",
-			logo: <BsFillCpuFill />,
+			logo: <BsFillCpuFill className='text-purple-700' />,
 		},
 		{
 			id: 2,
 			name: "Motherboard",
 			link: "/",
-			logo: <BsFillMotherboardFill />,
+			logo: <BsFillMotherboardFill className='text-purple-700' />,
 		},
 		{
 			id: 3,
 			name: "RAM",
 			link: "/",
-			logo: <CgSmartphoneRam />,
+			logo: <CgSmartphoneRam className='text-purple-700' />,
 		},
 		{
 			id: 4,
 			name: "Power Supply Unit",
 			link: "/",
-			logo: <ImPower />,
+			logo: <ImPower className='text-purple-700' />,
 		},
 		{
 			id: 5,
 			name: "Storage Device",
 			link: "/",
-			logo: <LuHardDrive />,
+			logo: <LuHardDrive className='text-purple-700' />,
 		},
 		{
 			id: 6,
 			name: "Monitor",
 			link: "/",
-			logo: <FiMonitor />,
+			logo: <FiMonitor className='text-purple-700' />,
 		},
 		{
 			id: 7,
 			name: "Other",
 			link: "/",
-			logo: <BsBuildingAdd />,
+			logo: <BsBuildingAdd className='text-purple-700' />,
 		},
 	];
 
@@ -71,7 +71,9 @@ const Products = ({ productsRes }) => {
 			<section>
 				<div className='mx-auto  max-w-7xl my-14'>
 					<div className='text-center'>
-						<h2 className='text-2xl font-bold p-1'>Featured Category</h2>
+						<h2 className='text-2xl font-bold p-1 text-purple-700'>
+							Featured Category
+						</h2>
 						<p>Get Your Desired Product from Featured Category!</p>
 					</div>
 
@@ -87,8 +89,8 @@ const Products = ({ productsRes }) => {
 											query: { category: name },
 										})
 									}
-									className={`flex flex-col justify-center items-center p-5 rounded-md border text-2xl shadow-md hover:text-[#EE4B23] duration-300 ${
-										name === query?.category && "text-[#EE4B23]"
+									className={`flex flex-col justify-center items-center p-5 rounded-md border text-2xl hover:text-purple-700 hover:shadow-xl duration-300 ${
+										name === query?.category && "text-purple-700 shadow-xl"
 									}`}>
 									{logo}
 									<p className='font-bold text-sm p-1 '>{name}</p>

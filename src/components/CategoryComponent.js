@@ -81,7 +81,7 @@ const CategoryComponent = ({ category }) => {
           </Link>
         ) : (
           <div className="flex justify-center items-center flex-col">
-            <p className="text-2xl font-bold p-2 my-2 text-[#EE4B23]">
+              <p className="text-2xl font-bold p-2 my-2 text-purple-700">
               {addedComponent?.Price}
             </p>
             <div className="m-2 flex justify-center items-center text-2xl">
