@@ -77,8 +77,6 @@ const PcBuilder = () => {
 								{categories?.map((category) => {
 									const { id, name, link } = category || {};
 
-									return <CategoryComponent key={id} category={category} />;
-
 									const addedComponent = components.find(
 										(product) => product.category === name,
 									);
@@ -101,7 +99,7 @@ const PcBuilder = () => {
 						<button
 							onClick={pcBuildHandelar}
 							disabled={components?.length !== 6}
-							className={` ${
+							className={`${
 								components.length === 6 ? "bg-purple-700" : "bg-purple-700/40"
 							} py-3 px-6 text-white rounded-md font-bold `}>
 							Build Now
